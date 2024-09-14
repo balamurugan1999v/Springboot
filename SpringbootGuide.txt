@@ -1,0 +1,22 @@
+Springboot
+
+What is springboot:
+	Springboot is java based spring framework used in Java web application
+	It is used to build microservice based application
+	It is used rapidly build the application with less no of configurations
+	It is having build in servers like tomcat and jetty.
+	
+Important topics I want to understand
+`	1. Bean - It is an object managed by Spring Inversion Of Control(IOC) container. IOC is responsible for initialing, assemblibg and running the Bean.
+		Bean lifecycle
+		Bean scope
+		Bean factory
+		
+	2. Configuration
+	3. ComponentScan
+	4. How to connect to H2 database by using springboot default H2 DB.
+	5. Dependancy Injection
+	6. IOC
+	7. Dispatcher Servlet
+	8. Spring IOC Container:
+		- It is implementing the IOC framework.
