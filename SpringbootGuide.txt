@@ -6,17 +6,53 @@ What is springboot:
 	It is used rapidly build the application with less no of configurations
 	It is having build in servers like tomcat and jetty.
 	
+What is the advantage of Springboot over Spring:
+	Auto configuration - Spring boot automatically configures the jar dependencies which is in the classpath of the project.
+	@EnableAutoConfiguration - is the annotation used of this
+	It is automatically configure the default error page, dispatcher servlet, datasource and configure webjars
+	
+Annotations:
+	@SpringBootApplication - This annotation used in the main class of the application.
+		It encapsulates @SpringBootConfiguration, @EnableAutoConfiguration and @ComponentScan annotations.
+	
+		Example:
+		@SpringBootApplication
+		public class DemoApplication{
+			public static void main(String args[]){
+				SpringApplication.run(DemoApplication.class, args);
+			}
+		}
+		
+	@SpringBootConfiguration - 
+		It is the automated version of @Configuration annotation in Spring.
+		In Most of the SpringBoot application using this feature via @SpringBootApplication annoatation.
+	
 Important topics I want to understand
 `	1. Bean - It is an object managed by Spring Inversion Of Control(IOC) container. IOC is responsible for initialing, assemblibg and running the Bean.
 		Bean lifecycle
 		Bean scope
 		Bean factory
 		
-	2. Configuration
-	3. ComponentScan
+	2. Configuration -  It is used to configure the dependencies which is present in the project classpath
+	3. ComponentScan - 
 	4. How to connect to H2 database by using springboot default H2 DB.
+		Add the h2 depedency in pom.xml 
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<scope>runtime</scope>
+			</dependency>
+		Add the datasource URL, username, password, driver in application.properties
+			#H2 Database
+			spring.datasource.url = jdbc:h2:mem:sampledb  -- Here sampledb is the db name
+			spring.datasource.driverClassName = org.h2.Driver 
+			spring.datasource.username = sa
+			spring.datasource.password = pass - It is the password, we can create as required.
+			spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+			spring.h2.console.enabled=true -- If it is enabled then we can see the database console.  Link will be http://localhost:portNumber/h2-console
 	5. Dependancy Injection
 	6. IOC
 	7. Dispatcher Servlet
+		It is used when we receive a request and serve it to the respective controller.
 	8. Spring IOC Container:
 		- It is implementing the IOC framework.
