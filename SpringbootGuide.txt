@@ -27,11 +27,16 @@ Annotations:
 		It is the automated version of @Configuration annotation in Spring.
 		In Most of the SpringBoot application using this feature via @SpringBootApplication annoatation.
 		
-	@RestController - It is used to create
+	@RestController - It is used to create Controller class, which contains both @Controller and @ResponseBody
+	
+	@Column - It is used to specify the column name we used in the tables.
+		@Column(name = "Student_name") 
+	@Table - This we use at class level and mention the entity class with the table name.
+		@Table(name = "Student") 
 	
 Important topics I want to understand
 `	1. Bean - It is an object managed by Spring Inversion Of Control(IOC) container. IOC is responsible for initialing, assemblibg and running the Bean.
-		Bean lifecycle
+		Bean lifecycle - it is managed by IOC Container which is from bean creation to destroy
 		Bean scope - The way it is created, shared and used through out the application lifecycle
 		Bean factory
 		
@@ -59,6 +64,12 @@ Important topics I want to understand
 		In Manual configuration, we need to setup this in web.xml file but here springboot automatically configure for us.
 	8. Spring IOC Container:
 		- It is implementing the IOC framework.
+		
+Hibernate:
+	Hibernate is one of the feature in springboot.
+	Here instead of writing the queries we can directly accessing the high level api by java object models.
+	JPA (Java Persistance API) is used to perform the Hibernate operations by using @Entity classes.
+	In pom need to add the spring-boot-starter-data-jpa dependancy and datasource data in application.properties will used for Hibernate
 		
 RestApiCall:
 	https://howtodoinjava.com/spring-boot2/resttemplate/spring-restful-client-resttemplate-example/
