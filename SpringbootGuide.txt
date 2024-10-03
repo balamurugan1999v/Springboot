@@ -26,15 +26,17 @@ Annotations:
 	@SpringBootConfiguration - 
 		It is the automated version of @Configuration annotation in Spring.
 		In Most of the SpringBoot application using this feature via @SpringBootApplication annoatation.
+		
+	@RestController - It is used to create
 	
 Important topics I want to understand
 `	1. Bean - It is an object managed by Spring Inversion Of Control(IOC) container. IOC is responsible for initialing, assemblibg and running the Bean.
 		Bean lifecycle
-		Bean scope
+		Bean scope - The way it is created, shared and used through out the application lifecycle
 		Bean factory
 		
 	2. Configuration -  It is used to configure the dependencies which is present in the project classpath
-	3. ComponentScan - 
+	3. ComponentScan - It is used to scan the components and beans inside the package to provide it to configuration to configure.
 	4. How to connect to H2 database by using springboot default H2 DB.
 		Add the h2 depedency in pom.xml 
 			<dependency>
@@ -50,9 +52,13 @@ Important topics I want to understand
 			spring.datasource.password = pass - It is the password, we can create as required.
 			spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 			spring.h2.console.enabled=true -- If it is enabled then we can see the database console.  Link will be http://localhost:portNumber/h2-console
-	5. Dependancy Injection
-	6. IOC
+	5. Dependancy Injection - It is providing the dependencies to the beans automatically.
+	6. IOC - Inversion of Controller
 	7. Dispatcher Servlet
 		It is used when we receive a request and serve it to the respective controller.
+		In Manual configuration, we need to setup this in web.xml file but here springboot automatically configure for us.
 	8. Spring IOC Container:
 		- It is implementing the IOC framework.
+		
+RestApiCall:
+	https://howtodoinjava.com/spring-boot2/resttemplate/spring-restful-client-resttemplate-example/
