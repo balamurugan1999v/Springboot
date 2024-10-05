@@ -33,6 +33,7 @@ Annotations:
 		@Column(name = "Student_name") 
 	@Table - This we use at class level and mention the entity class with the table name.
 		@Table(name = "Student") 
+	@Transient - It is used to skip the persistance in the entity class.
 	
 Important topics I want to understand
 `	1. Bean - It is an object managed by Spring Inversion Of Control(IOC) container. IOC is responsible for initialing, assemblibg and running the Bean.
@@ -73,3 +74,4 @@ Hibernate:
 		
 RestApiCall:
 	https://howtodoinjava.com/spring-boot2/resttemplate/spring-restful-client-resttemplate-example/
+	https://stackoverflow.com/questions/30337582/spring-boot-configure-and-use-two-data-sources
