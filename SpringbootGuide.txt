@@ -34,7 +34,18 @@ Annotations:
 	@Table - This we use at class level and mention the entity class with the table name.
 		@Table(name = "Student") 
 	@Transient - It is used to skip the persistance in the entity class.
+	@OneToMany - This is contains one user can have multiple rows in the another table
+	@ManyToOne - This is Inverse of above one. This table rows are reference for another table one row.
+	@OneToOne - This is exactly primary and foreign Key with one row.
+	@ManyToMany - This is multipleRows can be referenced in multipleRows of another table
 	
+	Example:
+		Student and laptop 
+		
+	@OneToMany - One student have multiple laptops.
+	@ManyToOne - Multiple laptops belongs to one student.
+	@OneToOne - One Laptop should be assigned only one student and vice versa.
+	@ManayToMany - In Computer lab any of the Laptop can be assigned to any of the Student
 Important topics I want to understand
 `	1. Bean - It is an object managed by Spring Inversion Of Control(IOC) container. IOC is responsible for initialing, assemblibg and running the Bean.
 		Bean lifecycle - it is managed by IOC Container which is from bean creation to destroy
@@ -75,3 +86,43 @@ Hibernate:
 RestApiCall:
 	https://howtodoinjava.com/spring-boot2/resttemplate/spring-restful-client-resttemplate-example/
 	https://stackoverflow.com/questions/30337582/spring-boot-configure-and-use-two-data-sources
+	
+SpringSecurity:
+	By enabling spring-security dependancy in pom springboot automatically apply the security for the application. The user name will be user and password we can see in the console while application coming up.
+	If we want to use our custom creds then need to mention them in the application.properties
+		spring.security.user.name = user
+		spring.security.user.password = pass
+	This will work for all the getRequest and not work for Post,PUT and Delete, it will give 401 error.
+	For all the DB write action need to send csrf-token in post request headers.
+	In order to avoid the above issue, we need to manually setup our own Security. Steps are below
+		1. Create a config class
+		2. Use @Configuration and @EnableWebSecurity annotations to use for security.
+		3. create a method with @Bean annotation and the return type will SecurityFilterChain and params is HttpSecurity
+			@Bean
+			public SecurityFilterChain securityFilterChain(HttpSecurity http){
+				return http.build(); --> It will return SecurityFilterChain
+			}
+		4. In My case csrf need to be disabled, for all the http calls authendication need to be happened, it need to be accessible via postname, singleSessionId can be mained until logout.
+			http
+				.csrf(customizer -> customizer.disable()) //-- It is used to disable the csrf
+				.authorizeHttpRequests(request -> request.anyRequest().authenticated()) // -- It is used to authendicate each http request.
+				.httpBasic(Customizer.withDefaults()) // It is used to access from Postman
+				build();
+			
+		
+ConfiguringMultipleDatabase:
+	1. Create datasouce details in app.properties
+	2. Create domain classes for each DB
+	3. Create Repository classes/Interface for each DB
+	4. Create a config class to configure -> Datasource, EntityManager, TransactionManager
+		1. Use @Configuration at class level
+		2. Create a @Bean with primaryDB name
+		3. Use @Primary for collecting the datasource by passing @ConfigurationProperties(prefix = "")
+		4. Return DatasourceBuilder.create().build(); --> It will return datasource obj
+		5. Create a next Bean for EntityManager, passing parameter as EntityManagerFactoryBuilder and return type as LocalContainerEntityManagerFactoryBean
+		6. put the datasource which we got it from line 4, add properties if we have any dialect, ddl-auto, show-sql, add the entity Package and build.
+		7 Create a next Bean for transactionManager by passing @Qualifier with EntityManagerBeanName LocalContainerEntityManagerFactoryBean and return type as PlatformTransactionManager
+			return  new JpaTransactionManager(localContainerEntityManagerFactoryBean.getObject())
+	5. Add the @EnableTransactionManagement and @EnableJpaRepositories(entityManagerFactoryRef = BeanName, basePackage ="repoPackage", transactionManagerRef = BeanName)
+	
+		
