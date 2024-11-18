@@ -126,3 +126,6 @@ ConfiguringMultipleDatabase:
 	5. Add the @EnableTransactionManagement and @EnableJpaRepositories(entityManagerFactoryRef = BeanName, basePackage ="repoPackage", transactionManagerRef = BeanName)
 	
 		
+JSP:
+	Java Server Pages
+		Thymeleaf and Freemarker
