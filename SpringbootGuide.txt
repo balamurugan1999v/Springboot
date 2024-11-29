@@ -39,6 +39,26 @@ Annotations:
 	@OneToOne - This is exactly primary and foreign Key with one row.
 	@ManyToMany - This is multipleRows can be referenced in multipleRows of another table
 	
+	@Qualifier:
+		@Qualifier("beanName")
+		It is used to inject a specific bean when multipleBeans with same type.
+		For example we have two classes which is implementing one single interface
+			interface Pizza{
+				String getData()
+			}
+			class Veg implements Pizza{
+				public String getData(){
+					return "Veg";
+				}
+			}
+			class NonVeg implements Pizza{
+				public String getData(){
+					return "Non Veg";
+				}
+			}
+		
+		Here if we are autowiring Pizza interface then spring ioc will get confused which implementation need to be used whether veg or nonveg. In order to avoid that if we want to use Veg then we can use @Qualifier("veg") then it will call the respective class.
+	
 	Example:
 		Student and laptop 
 		
@@ -125,6 +145,17 @@ ConfiguringMultipleDatabase:
 			return  new JpaTransactionManager(localContainerEntityManagerFactoryBean.getObject())
 	5. Add the @EnableTransactionManagement and @EnableJpaRepositories(entityManagerFactoryRef = BeanName, basePackage ="repoPackage", transactionManagerRef = BeanName)
 	
+CustomExceptionHandling:
+	Create a class and extends RunTimeException class
+	Create a constructor with one parameter which is error message. Inside the constructor call the super class with the error message like super(errorMessage);
+	Create a customExceptionHandler class and create a method with respective errorMessage name and annotate with @ExceptionHandler
+	
+	public class ExceptionHandler{
+	
+		@ExceptionHandler(ExceptionClassName.class)
+		public ResponseEntity<String> methodName(ExceptionClass obj){
+			return ResponseEntity<String>(obj.getMessage(), HttpStatus.NOT_FOUND);
+	}
 		
 JSP:
 	Java Server Pages
