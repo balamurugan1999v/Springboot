@@ -38,6 +38,10 @@ Annotations:
 	@ManyToOne - This is Inverse of above one. This table rows are reference for another table one row.
 	@OneToOne - This is exactly primary and foreign Key with one row.
 	@ManyToMany - This is multipleRows can be referenced in multipleRows of another table
+	@OneToMany - One student have multiple laptops.
+	@ManyToOne - Multiple laptops belongs to one student.
+	@OneToOne - One Laptop should be assigned only one student and vice versa.
+	@ManayToMany - In Computer lab any of the Laptop can be assigned to any of the Student
 	
 	@Qualifier:
 		@Qualifier("beanName")
@@ -62,10 +66,7 @@ Annotations:
 	Example:
 		Student and laptop 
 		
-	@OneToMany - One student have multiple laptops.
-	@ManyToOne - Multiple laptops belongs to one student.
-	@OneToOne - One Laptop should be assigned only one student and vice versa.
-	@ManayToMany - In Computer lab any of the Laptop can be assigned to any of the Student
+	
 Important topics I want to understand
 `	1. Bean - It is an object managed by Spring Inversion Of Control(IOC) container. IOC is responsible for initialing, assemblibg and running the Bean.
 		Bean lifecycle - it is managed by IOC Container which is from bean creation to destroy
