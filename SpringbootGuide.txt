@@ -161,3 +161,9 @@ CustomExceptionHandling:
 JSP:
 	Java Server Pages
 		Thymeleaf and Freemarker
+
+Spring Framework:
+	IOC and DI
+	AOP
+	Modular architecture
+	The Spring Framework is a foundational and highly influential Java framework that provides a comprehensive and flexible set of tools for building robust, scalable, and maintainable enterprise applications. Its core principles of IoC/DI and AOP, along with its modular design, have made it a cornerstone of modern Java development. Spring Boot builds upon this foundation to further simplify and accelerate the development experience
