@@ -42,6 +42,7 @@ Annotations:
 	@ManyToOne - Multiple laptops belongs to one student.
 	@OneToOne - One Laptop should be assigned only one student and vice versa.
 	@ManayToMany - In Computer lab any of the Laptop can be assigned to any of the Student
+	@Component - It is general purpose annotation like utility, helpers class. It will also work as @Service, @Controller, @Repository
 	
 	@Qualifier:
 		@Qualifier("beanName")
