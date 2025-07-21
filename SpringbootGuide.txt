@@ -13,7 +13,7 @@ What is the advantage of Springboot over Spring:
 	
 Annotations:
 	@SpringBootApplication - This annotation used in the main class of the application.
-		It encapsulates @SpringBootConfiguration, @EnableAutoConfiguration and @ComponentScan annotations.
+		It encapsulates @Configuration, @EnableAutoConfiguration and @ComponentScan annotations.
 	
 		Example:
 		@SpringBootApplication
@@ -26,6 +26,8 @@ Annotations:
 	@SpringBootConfiguration - 
 		It is the automated version of @Configuration annotation in Spring.
 		In Most of the SpringBoot application using this feature via @SpringBootApplication annoatation.
+		If we want to create a custom bean then class we need to mention as @Configuration.
+	@ComponentScan - Which will scan all the @annotations in the subdirectories.
 		
 	@RestController - It is used to create Controller class, which contains both @Controller and @ResponseBody
 	
@@ -168,3 +170,36 @@ Spring Framework:
 	AOP
 	Modular architecture
 	The Spring Framework is a foundational and highly influential Java framework that provides a comprehensive and flexible set of tools for building robust, scalable, and maintainable enterprise applications. Its core principles of IoC/DI and AOP, along with its modular design, have made it a cornerstone of modern Java development. Spring Boot builds upon this foundation to further simplify and accelerate the development experience
+SpringIOC:
+	Create the objects(beans), maintaining and destroying.
+	Dependancy Injection - 
+		Injecting the depandency by spring IOC. For example @Autowired annotation, by not creating object itself we can able to access the another class from this class.
+		Constructor based injection
+		Setter injection
+		Field injection
+	It will do the autoconfiguration with the help of @annotations.
+	Loose Coupling: Components are not directly dependent on each other for creation, making the system more flexible and easier to change.
+	
+	
+	
+HTTP Methods:
+	GET: It is used to collect the data.
+	POST: It is used to create a data newly
+	PUT: It is used to update the existing data
+		It is used for retry / autoretry, because if it calls multiple time nothing will happened newly
+	DELETE: It is used to delete the data.
+	PATCH: It is used to partially update the data. for example if we have DTO like 
+	{
+		name:
+		age:
+		address:
+	}
+	
+	If you want to update any particular one then you can like below
+	{                       {					{
+		name: 					age:				address:
+	}						}					}
+	
+	Which will update this particular spec where as put will replace whole data into single data, which means it will delete the other 2, whatever passed in the request it will replace that with existing records.
+	
+	Idempotent: GET, PUT, DELETE, PATCH are idempotent because, if we retried the same api with same request payload it should not duplicate anything same result would be happened.

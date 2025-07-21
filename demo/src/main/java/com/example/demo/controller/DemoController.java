@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,8 +21,10 @@ public class DemoController {
 	public DemoService demoService;
 
 	@PostMapping("/insertData")
-	public String insertData(DemoDomain data) {
+	public String insertData(@RequestBody DemoDomain data) {
+		System.out.println("Entering into insert Data");
 		String response = demoService.insertData(data);
+		System.out.println("Exit from insert Data");
 		return response;		
 	}
 	
@@ -35,7 +38,7 @@ public class DemoController {
 	
 	@GetMapping("/hello")
 	public String getMessage(){
-		return "Hello";		
+		return "Hello";
 	}
 	
 	
