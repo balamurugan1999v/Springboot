@@ -45,6 +45,13 @@ Annotations:
 	@OneToOne - One Laptop should be assigned only one student and vice versa.
 	@ManayToMany - In Computer lab any of the Laptop can be assigned to any of the Student
 	@Component - It is general purpose annotation like utility, helpers class. It will also work as @Service, @Controller, @Repository
+	If only @GeneratedValue given seq will be created
+	@GeneratedValue(strategy = GenerationType.IDENTITY) - Which will create seq one by one but the above one will create a seq and get the value also from it.
+	@Scheduled - It is used for schedule task. We need to enable it at the main method class @EnableScheduling
+		1.@Scheduled(fixedRate = 5000) --> Every 5sec the method will trigger.
+		2.@Scheduled(fixedDelay = 5000) --> Every 5sec will be delay, every execution will start with 5secs delay.
+		3.@Scheduled(fixedRate=5000, initialDelay=10000) --> Every execution will do in 5 secs, first execution will start after 10 seconds.
+		4.@Scheduled(cron ="* * * * * ?") - sec min hr day-of-month month day-of-week
 	
 	@Qualifier:
 		@Qualifier("beanName")
