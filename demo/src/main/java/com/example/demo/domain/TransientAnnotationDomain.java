@@ -2,6 +2,7 @@ package com.example.demo.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -11,13 +12,14 @@ import jakarta.persistence.Transient;
 public class TransientAnnotationDomain {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)// If only @GeneratedValue given seq will be created
 	public Long id;
 	public int num1;
+	//@Transient
 	public int num2;
 	public int result;
 	
-	@Transient
+	//
 	public int findResult() {
 		return num1+num2;
 	}
