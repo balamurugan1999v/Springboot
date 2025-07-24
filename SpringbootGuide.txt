@@ -210,3 +210,5 @@ HTTP Methods:
 	Which will update this particular spec where as put will replace whole data into single data, which means it will delete the other 2, whatever passed in the request it will replace that with existing records.
 	
 	Idempotent: GET, PUT, DELETE, PATCH are idempotent because, if we retried the same api with same request payload it should not duplicate anything same result would be happened.
+	
+Fieldclient:
